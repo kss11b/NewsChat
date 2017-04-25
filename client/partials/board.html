@@ -6,11 +6,11 @@
     <input type="submit"value="Post">
   </form>
   <div ng-repeat="post in board.posts | orderBy: '-createdAt'">
-    <p>*******************************************</p>
+
     <p>{{post.username}} | {{post.createdAt | date:'yyyy-MM-dd HH:mm:ss '}}</p>
     <p>{{post.text}}</p>
   </div>
-  <h2>********{{board.topic}} News**********</h2>
+  <h2>{{board.topic}} News</h2>
   <div ng-repeat="article in news">
     <h3>{{article.title}}</h3>
     <p>{{article.description}}</p>

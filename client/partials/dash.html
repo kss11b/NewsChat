@@ -1,12 +1,20 @@
 <div ng-controller="dashController">
-  <h1>News Talk</h1>
-<button ng-click="logout()">Logout</button>
-<p>Hello, {{current_user.fname}}!</p>
+<div class="red lighten-1">
+  <h1 class="white-text ">News Talk</h1>
+</div>
+<button ng-click="logout()" class="waves-effect black btn">Logout</button>
+<h3>Hello, {{current_user.fname}}!</h3>
+<div class="z-depth-4">
+
+
 <form ng-submit="board(newBoard)">
   <label>Title</label>
   <input type="text" ng-model="newBoard.title" >
   <label>Topic</label>
-  <select ng-model="newBoard.topic">
+  <p></p>
+  <div class="input-field col s12 red">
+  <select ng-model="newBoard.topic" class="browser-default blue-grey lighten-5 z-depth-1">
+    <option value="" disabled selected>Choose your option</option>
     <option value="Politics">Politics</option>
     <option value="Sports">Sports</option>
     <option value="Entertainment">Entertainment</option>
@@ -14,12 +22,30 @@
     <option value="Tech">Tech</option>
     <option value="Business">Business</option>
   </select>
-  <input type="submit" value="Create Room">
+  </div>
+  <p></p>
+  <input type="submit" value="+" class="waves-effect blue-grey lighten-5 btn lighten-5 z-depth-1 black-text">
+  <p></p>
 </form>
-<div ng-repeat="board in boards">
-  <p>***************************************</p>
+</div>
+<!-- <div ng-repeat="board in boards">
   <h4>{{board.title}}</h4><button type="button" ng-click="move(board._id)">View</button>
   <p>{{board.admin.username}} | {{board.topic}} | {{board.createdAt | date:'yyyy-MM-dd'}}</p>
   <button type="button" ng-click="delete(board._id)" ng-show="board.admin._id == current_user._id">Delete</button>
+</div> -->
+
+<div class="row" ng-repeat="board in boards">
+  <div class="col s12 m6">
+    <div class="card red lighten-1">
+      <div class="card-content white-text">
+        <button class="waves-effect waves-light btn" ng-click="move(board._id)">{{board.title}}</button>
+        <p>{{board.admin.username}} | {{board.topic}} | {{board.createdAt | date:'yyyy-MM-dd'}}</p>
+      </div>
+      <div class="card-action">
+        <button  ng-click="delete(board._id)" class="waves-effect black btn" ng-show="board.admin._id == current_user._id">Delete</a>
+      </div>
+    </div>
+  </div>
 </div>
+
 </div>
