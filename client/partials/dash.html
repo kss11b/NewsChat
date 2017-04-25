@@ -1,0 +1,25 @@
+<div ng-controller="dashController">
+  <h1>News Talk</h1>
+<button ng-click="logout()">Logout</button>
+<p>Hello, {{current_user.fname}}!</p>
+<form ng-submit="board(newBoard)">
+  <label>Title</label>
+  <input type="text" ng-model="newBoard.title" >
+  <label>Topic</label>
+  <select ng-model="newBoard.topic">
+    <option value="Politics">Politics</option>
+    <option value="Sports">Sports</option>
+    <option value="Entertainment">Entertainment</option>
+    <option value="Science">Science</option>
+    <option value="Tech">Tech</option>
+    <option value="Business">Business</option>
+  </select>
+  <input type="submit" value="Create Room">
+</form>
+<div ng-repeat="board in boards">
+  <p>***************************************</p>
+  <h4>{{board.title}}</h4><button type="button" ng-click="move(board._id)">View</button>
+  <p>{{board.admin.username}} | {{board.topic}} | {{board.createdAt | date:'yyyy-MM-dd'}}</p>
+  <button type="button" ng-click="delete(board._id)" ng-show="board.admin._id == current_user._id">Delete</button>
+</div>
+</div>
